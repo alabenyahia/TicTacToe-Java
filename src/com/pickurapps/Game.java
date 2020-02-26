@@ -19,4 +19,22 @@ public class Game {
             }
         }
     }
+
+    // check if the game is over or there is a winner
+    public static boolean gameOver(int rMove, int cMove) {
+        if (board[0][cMove] == board[1][cMove]
+                && board[0][cMove] == board[2][cMove])
+            return true;
+        if (board[rMove][0] == board[rMove][1]
+                && board[rMove][0] == board[rMove][2])
+            return true;
+
+        if (board[0][0] == board[1][1] && board[0][0] == board[2][2]
+                && board[1][1] != '_')
+            return true;
+        if (board[0][2] == board[1][1] && board[0][2] == board[2][0]
+                && board[1][1] != '_')
+            return true;
+        return false;
+    }
 }
