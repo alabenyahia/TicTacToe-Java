@@ -37,4 +37,18 @@ public class Game {
             return true;
         return false;
     }
+
+
+    // check if there is a place left in the board
+    public static boolean placesLeftInBoard() {
+        for (int i = 0 ; i < 3; i++) {
+            for (int j = 0 ; j < 3 ; j++) {
+                if (board[i][j] == '_')
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    
 }
