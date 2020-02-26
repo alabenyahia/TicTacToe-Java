@@ -50,5 +50,44 @@ public class Game {
         return false;
     }
 
-    
+    // simulate playing the game
+    public static void play(){
+        boolean playing = true;
+        printBoard();
+        System.out.println();
+        while (playing){
+            if (placesLeftInBoard()) {
+                boolean wrongPlace = true;
+                while (wrongPlace) {
+                    System.out.println("It's " + turn + " turn");
+                    System.out.println("Enter a row");
+                    row = scanner.nextInt() - 1;
+                    System.out.println("Enter a column");
+                    col = scanner.nextInt() - 1;
+                    if (board[row][col] == '_'){
+                        board[row][col] = turn;
+                        wrongPlace = false;
+                    } else {
+                        System.out.println("Wrong place");
+                        printBoard();
+                        System.out.println();
+                    }
+                }
+
+                if (gameOver(row, col)){
+                    playing = false;
+                    System.out.println("Game over! Player " + turn + " wins!");
+                }
+                printBoard();
+                System.out.println();
+                if (turn == 'X')
+                    turn = 'O';
+                else
+                    turn = 'X';
+            } else {
+                playing = false;
+                System.out.println("Game over! It's a tie");
+            }
+        }
+    }
 }
